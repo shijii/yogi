@@ -1,13 +1,17 @@
 
 
-var hostsList = []
-
-
-
 // Called when message received from main process
-window.api.receiveFromD((data) => {
-    console.log(`Received ${data} from main process`);
-});
+window.api.hostsList( (ev, data) => {
+    hostsList = Object.entries(data)
+    
+    for (const key in hostsList) {
 
-// Send a message to the main process
-window.api.sendToA();
+            const element = hostsList.key;
+            console.log(key, element)
+
+    }
+
+
+
+} );
+

@@ -2,10 +2,12 @@ const { app, BrowserWindow, ipcMain, Menu } = require('electron')
 
 const path = require('path')
 const ping = require('ping')
+const hostsList = require('./config/hosts.js')
+console.log(hostsList)
 
 let win;
 
-var hostsList = ['192.168.1.254', 'google.com', 'yahoo.com'];
+// var hostsList = ['192.168.1.254', 'google.com', 'yahoo.com'];
 // hostsList.forEach(function(host){
 //     ping.sys.probe(host, function(isAlive){
 //         var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
@@ -29,7 +31,7 @@ function createWindow () {
 
   win.loadFile('index.html')
 
-  win.webContents.send("invioDaMain", hostsList);
+  win.webContents.send("hostsList", hostsList);
 
 }
 

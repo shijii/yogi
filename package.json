@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/shijii/yogi#readme",
   "dependencies": {
-    "ping": "*"
+    "ping": "*",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "electron": "*"
