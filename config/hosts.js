@@ -8,7 +8,7 @@ module.exports = {
       'out': false
       }
     },
-  {
+    {
     'host': '192.168.1.113',
     'name': 'Pressa2',
     'notify': {
@@ -34,7 +34,7 @@ module.exports = {
     }
   ],
   "group2" : [
-  {
+    {
     'host': '192.168.1.73',
     'name': 'Pressa5',
     'notify': {
@@ -58,7 +58,6 @@ module.exports = {
         'out': false
       }
     },
-    ,
     {
     'host': '192.168.1.154',
     'name': 'Pressa8',
@@ -75,7 +74,7 @@ module.exports = {
       'out': false
       }
     },
-  {
+    {
     'host': '192.168.1.174',
     'name': 'P1v1',
     'notify': {
@@ -99,7 +98,7 @@ module.exports = {
       'out': false
       }
     },
-  {
+    {
     'host': '192.168.1.178',
     'name': 'P2v3',
     'notify': {

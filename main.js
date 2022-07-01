@@ -2,8 +2,8 @@ const { app, BrowserWindow, ipcMain, Menu } = require('electron')
 
 const path = require('path')
 const ping = require('ping')
-const hostsList = require('./config/hosts.js')
-console.log(hostsList)
+const hostsListObj = require('./config/hosts.js')
+
 
 let win;
 
@@ -31,7 +31,7 @@ function createWindow () {
 
   win.loadFile('index.html')
 
-  win.webContents.send("hostsList", hostsList);
+  win.webContents.send("hostsListEv", hostsListObj);
 
 }
 

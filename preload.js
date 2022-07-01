@@ -8,8 +8,7 @@ const {
 // without exposing the entire object
 
 const api = {
-  hostsList: (data) => ipcRenderer.on("hostsList", data ),
-  
+  hostsListF: (data) => ipcRenderer.on("hostsListEv", data ),
 }
 
 contextBridge.exposeInMainWorld("api", api);
