@@ -1,15 +1,10 @@
-const {
-  ipcRenderer,
-  contextBridge
-} = require("electron");
+const { contextBridge, ipcRenderer } = require('electron');
 
-// Expose protected methods off of window (ie.
-// window.api.sendToA) in order to use ipcRenderer
-// without exposing the entire object
 
-const api = {
-  hostsListF: (data) => ipcRenderer.on("hostsListEv", data ),
-}
+contextBridge.exposeInMainWorld( 'yogi_api', {
 
-contextBridge.exposeInMainWorld("api", api);
+
+  getHostsList: () =>  ipcRenderer.invoke("get-hosts-list")
+
+})
 

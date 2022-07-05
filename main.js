@@ -1,10 +1,10 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron')
+const { app, BrowserWindow, ipcMain, Menu, webContents } = require('electron')
 
 const path = require('path')
 const ping = require('ping')
-const hostsListObj = require('./config/hosts.js')
+const hostsListObj = require('./config/hosts.js');
 
-
+console.log(hostsListObj)
 let win;
 
 // var hostsList = ['192.168.1.254', 'google.com', 'yahoo.com'];
@@ -31,7 +31,9 @@ function createWindow () {
 
   win.loadFile('index.html')
 
-  win.webContents.send("hostsListEv", hostsListObj);
+  ipcMain.handle("get-hosts-list", () => {
+   return hostsListObj 
+  } )
 
 }
 
