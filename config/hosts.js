@@ -1,7 +1,7 @@
 module.exports = { 
   "group1" : [
     {
-    'host': '192.168.1.116',
+    'host': '192.168.1.158',
     'name': 'Pressa1',
     'notify': {
       'in': false,
@@ -91,14 +91,6 @@ module.exports = {
       }
     },  
     {
-    'host': '192.168.1.176',
-    'name': 'P2v1',
-    'notify': {
-      'in': false,
-      'out': false
-      }
-    },
-    {
     'host': '192.168.1.178',
     'name': 'P2v3',
     'notify': {
@@ -107,7 +99,7 @@ module.exports = {
       }
     },
     {
-    'host': '192.168.1.217',
+    'host': '8.8.8.8',
     'name': 'P2v2',
     'notify': {
         'in': false,
@@ -115,7 +107,7 @@ module.exports = {
       }
     },
     {
-    'host': '192.168.1.183',
+    'host': '192.168.1.84',
     'name': 'P3v1',
     'notify': {
         'in': false,

@@ -1,0 +1,54 @@
+:root{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: x-small;
+} 
+main {
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+section {
+  background-color: #252525;
+
+}
+
+.hostsGroup{
+  margin: 0.1em;
+  border: solid black 0.1vh;
+  padding: 0.3em;
+}
+.hostEntry{
+  padding: 0.2em;
+  border: solid black 0.1vh;
+  margin: 0.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #333;
+  font-weight: 200;
+	color: white;
+	font-family: monospace;
+	border-top-right-radius: 0.8em;
+  font-size: 12px;
+}
+
+.hostName{
+ color: white;
+ font-size: small;
+ font-weight: 600;
+
+}
+.hostIp{
+ color: #ccc;
+ font-size: xx-small;
+}
+
+.online {
+  background-color: #3d811e;
+}
+.offline {
+  background-color: darkred;
+}
