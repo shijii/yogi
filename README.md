@@ -1,4 +1,5 @@
 # yogi
+![image](https://user-images.githubusercontent.com/84865133/177806303-65f2c760-54f1-4828-be00-528a93745fc4.png)
 
 1 - clone repository:
   git clone https://github.com/shijii/yogi.git
