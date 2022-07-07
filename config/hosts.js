@@ -1,98 +1,26 @@
 module.exports = { 
-  "group1" : [
+  "LAN" : [
     {
-    'host': '192.168.1.158',
-    'name': 'Pressa1',
+    'host': '192.168.1.50',
+    'name': 'PC1',
     'notify': {
       'in': false,
       'out': false
       }
     },
     {
-    'host': '192.168.1.113',
-    'name': 'Pressa2',
-    'notify': {
-      'in': false,
-      'out': false
-      }
-    },
-    {
-    'host': '192.168.1.115',
-    'name': 'Pressa3',
-    'notify': {
-        'in': false,
-        'out': false
-      }
-    },  
-    {
-    'host': '192.168.1.106',
-    'name': 'Pressa4',
+    'host': '192.168.1.11',
+    'name': 'CAMERA',
     'notify': {
       'in': false,
       'out': false
       }
     }
   ],
-  "group2" : [
+  "WAN" : [
     {
-    'host': '192.168.1.73',
-    'name': 'Pressa5',
-    'notify': {
-      'in': false,
-      'out': false
-      }
-    },
-    {
-    'host': '192.168.1.50',
-    'name': 'Pressa6',
-    'notify': {
-        'in': false,
-        'out': false
-      }
-    },
-    {
-    'host': '192.168.1.58',
-    'name': 'Pressa7',
-    'notify': {
-        'in': false,
-        'out': false
-      }
-    },
-    {
-    'host': '192.168.1.154',
-    'name': 'Pressa8',
-    'notify': {
-        'in': false,
-        'out': false
-      }
-    },
-    {
-    'host': '192.168.1.173',
-    'name': 'P1v2',
-    'notify': {
-      'in': false,
-      'out': false
-      }
-    },
-    {
-    'host': '192.168.1.174',
-    'name': 'P1v1',
-    'notify': {
-      'in': false,
-      'out': false
-      }
-    },
-    {
-    'host': '192.168.1.175',
-    'name': 'P1v3',
-    'notify': {
-        'in': false,
-        'out': false
-      }
-    },  
-    {
-    'host': '192.168.1.178',
-    'name': 'P2v3',
+    'host': '1.1.1.1',
+    'name': 'OpenNIC',
     'notify': {
       'in': false,
       'out': false
@@ -100,15 +28,7 @@ module.exports = {
     },
     {
     'host': '8.8.8.8',
-    'name': 'P2v2',
-    'notify': {
-        'in': false,
-        'out': false
-      }
-    },
-    {
-    'host': '192.168.1.84',
-    'name': 'P3v1',
+    'name': 'Google P-DNS',
     'notify': {
         'in': false,
         'out': false

@@ -10,54 +10,25 @@ const nativeImage = require('electron').nativeImage;
 var appIcon = nativeImage.createFromPath(__dirname + '/img/icon.png'); 
 appIcon.setTemplateImage(true);
 const packageJson = readPackageJson();
-
 let win;
 
-// This function will output the lines from the script 
-// and will return the full combined output
-// as well as exit code when it's done (using the callback).
 function runCmd(command, args, callback) {
     var child = child_process.spawn(command, args, {
         encoding: 'utf8',
         shell: true
     });
-    // You can also use a variable to save the output for when the script closes later
-    // child.on('error', (error) => {
-    //     dialog.showMessageBox({
-    //         title: 'Error',
-    //         type: 'warning',
-    //         message: 'Error occured.\r\n' + error
-    //     });
-    // });
 
     child.stdout.setEncoding('utf8');
     child.stdout.on('data', (data) => {
-        //Here is the output
-        data=data.toString();   
-        console.log(data);      
+        data=data.toString();       
     });
 
     child.stderr.setEncoding('utf8');
     child.stderr.on('data', (data) => {
-        // Return some data to the renderer process with the mainprocess-response ID
         win.webContents.send('mainprocess-response', data);
-        //Here is the output from the command
-        console.log(data);  
     });
 
-    // child.on('close', (code) => {
-    //     //Here you can get the exit code of the script  
-    //     switch (code) {
-    //         case 0:
-    //             dialog.showMessageBox({
-    //                 title: 'End of Process',
-    //                 type: 'info',
-    //                 message: 'End process.\r\n'
-    //             });
-    //             break;
-    //     }
 
-    // });
     if (typeof callback === 'function')
         callback();
 }
@@ -102,8 +73,9 @@ function createWindow () {
   win = new BrowserWindow({
     width: 320,
     height: 480,
-    backgroundColor: "#111",
     icon: appIcon,
+    backgroundColor:'#2e2c29',
+    alwaysOnTop: true,
     webPreferences: {
         contextIsolation: true,
         sandbox: true,
@@ -139,7 +111,7 @@ function createWindow () {
     shell.openPath(path)
   })
 
-  }
+}
     
 
 let pingtimer = setInterval( () => {
