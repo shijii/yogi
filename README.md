@@ -15,3 +15,6 @@
   
 4 - (optional) build executable:
   npm exec --package=@electron-forge/cli -c "electron-forge import"
+  
+  
+If you have "Putty" installed you can doubleclick a host rectangle in the gui to run a ssh connection toward it (only on default port)
