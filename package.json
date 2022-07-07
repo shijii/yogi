@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/shijii/yogi#readme",
   "dependencies": {
+    "child_process": "^1.0.2",
     "ping": "*",
     "toastr": "^2.1.4"
   },

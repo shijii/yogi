@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <title>Yogi</title>
   </head>
   <body>
     <main>
     </main>
+    <footer>
+      <div>
+        <span id="app-name"></span> - V.<span id="app-version"></span>
+      </div>
+      <div>
+        Made with Electron <span id="electron-version"></span>
+      </div>
+    </footer>
   </body>
 </html>
 <script src="./renderer.js" type="module"></script>

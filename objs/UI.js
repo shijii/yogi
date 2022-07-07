@@ -1,9 +1,5 @@
 export default class UI {
 
-    
-    static greet(){
-        alert("CIAO")
-    }
 
     static generateHostsElement(hostsList) {
     
@@ -27,7 +23,12 @@ export default class UI {
               hostContainer.name = host.name
               hostContainer.innerHTML = `<div class="hostName">${host.name}</div>
                                         <div class="hostIp"> ${host.host}</div>`
-              hostContainer.ondblclick()                    
+              hostContainer.addEventListener("dblclick", () => {
+                console.info(`executing ssh on ${host.host}`)
+                window.yogi_api.openSSH(host.host)
+            })     
+            //   hostContainer.addEventListener("click", () => alert(host.host))                 
+
               hostContainer.classList.add('hostEntry')
   
               groupContainer.append(hostContainer)
@@ -47,6 +48,14 @@ export default class UI {
     hostData.hostStatus ?  targetHost.classList.add("online") : targetHost.classList.add("offline")
     targetHost.setAttribute("alt",hostData.hostLastSeen)
 
+  }
+
+
+  static appInfo(appInfo){
+    console.log(appInfo)
+    document.querySelector('#app-version').textContent = appInfo.app_version
+    document.querySelector('#app-name').textContent = appInfo.app_name
+    document.querySelector('#electron-version').textContent = appInfo.electron_version
   }
 
 }

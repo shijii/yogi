@@ -3,11 +3,14 @@
   font-size: x-small;
 } 
 main {
-  background-color: #333;
+  background-color: #111;
   color: white;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+footer{
+  color: #ccc
 }
 
 section {
@@ -33,12 +36,15 @@ section {
 	font-family: monospace;
 	border-top-right-radius: 0.8em;
   font-size: 12px;
+  flex-wrap: wrap;
+  max-width: 10em;
 }
 
 .hostName{
+ text-overflow: ellipsis;
  color: white;
  font-size: small;
- font-weight: 600;
+ font-weight: 300;
 
 }
 .hostIp{
