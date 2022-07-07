@@ -1,12 +1,9 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 
-<<<<<<< Updated upstream
-=======
 const api = {
   hostsList_EP: (data) => ipcRenderer.on("hostsListEv", data ),
 }
->>>>>>> Stashed changes
 
 contextBridge.exposeInMainWorld( 'yogi_api', {
 
