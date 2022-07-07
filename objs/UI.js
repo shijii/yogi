@@ -23,7 +23,7 @@ export default class UI {
               hostContainer.name = host.name
               hostContainer.innerHTML = `<div class="hostName">${host.name}</div>
                                         <div class="hostIp"> ${host.host}</div>
-                                        <div class="lastSeen"></div>`
+                                        <div class="lastSeen">No data available</div>`
               hostContainer.addEventListener("dblclick", () => {
                 console.info(`executing ssh on ${host.host}`)
                 window.yogi_api.openSSH(host.host)
@@ -46,13 +46,15 @@ export default class UI {
   static updateHosts(hostData){
 
     let targetHost = document.querySelector(`#${hostData.hostName.replace(/ /g, "_")}`)
-    hostData.hostStatus ?  targetHost.classList.add("online") : targetHost.classList.add("offline")
-    if (hostData.hostLastSeen){
+
+    if (hostData.hostStatus === true){
+      targetHost.classList.add("online")
+      targetHost.classList.remove("offline")
       targetHost.querySelector(`.lastSeen`).innerHTML = `${hostData.hostLastSeen.toLocaleString(navigator.language)}`
     } else {
-      targetHost.querySelector(`.lastSeen`).innerHTML = `No data available`
+      targetHost.classList.add("offline")
+      targetHost.classList.remove("online")
     }
-
   }
 
 

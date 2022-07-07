@@ -50,13 +50,11 @@ function statusedHosts(hostsListObj){
       ping.sys.probe(host.host, async function(isAlive){ 
 
         host.status = isAlive ? true : false
-        let previousLastSeen = host.lastSeen ? host.lastSeen : false
-        let lastSeen = isAlive ? new Date() : false 
 
         let data = {
           hostName : host.name,
           hostStatus : host.status,
-          hostLastSeen : lastSeen ? lastSeen : previousLastSeen
+          hostLastSeen : new Date()
         }
         
         win.webContents.send("update-host", data)
@@ -71,8 +69,8 @@ function statusedHosts(hostsListObj){
 
 function createWindow () {
   win = new BrowserWindow({
-    width: 320,
-    height: 480,
+    width: 350,
+    height: 250,
     icon: appIcon,
     backgroundColor:'#2e2c29',
     alwaysOnTop: true,
