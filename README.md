@@ -6,7 +6,7 @@
   
 2 - npm install:
  
-  cd yogiApp
+  cd yogi
   
   npm install
   
