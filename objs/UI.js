@@ -22,11 +22,12 @@ export default class UI {
               hostContainer.id = host.name
               hostContainer.name = host.name
               hostContainer.innerHTML = `<div class="hostName">${host.name}</div>
-                                        <div class="hostIp"> ${host.host}</div>`
+                                        <div class="hostIp"> ${host.host}</div>
+                                        <div class="lastSeen"></div>`
               hostContainer.addEventListener("dblclick", () => {
                 console.info(`executing ssh on ${host.host}`)
                 window.yogi_api.openSSH(host.host)
-            })     
+              })     
             //   hostContainer.addEventListener("click", () => alert(host.host))                 
 
               hostContainer.classList.add('hostEntry')
@@ -46,7 +47,9 @@ export default class UI {
 
     let targetHost = document.querySelector(`#${hostData.hostName}`)
     hostData.hostStatus ?  targetHost.classList.add("online") : targetHost.classList.add("offline")
-    targetHost.setAttribute("alt",hostData.hostLastSeen)
+    if (hostData.hostLastSeen){
+      targetHost.querySelector(`.lastSeen`).innerHTML = `${hostData.hostLastSeen.toLocaleString(navigator.language)}`
+    }
 
   }
 
@@ -55,6 +58,7 @@ export default class UI {
     console.log(appInfo)
     document.querySelector('#app-version').textContent = appInfo.app_version
     document.querySelector('#app-name').textContent = appInfo.app_name
+    document.querySelector('#app-author').textContent = appInfo.app_author
     document.querySelector('#electron-version').textContent = appInfo.electron_version
   }
 

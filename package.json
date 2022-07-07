@@ -1,13 +1,15 @@
 {
   "name": "yogi",
-  "version": "1.0.0",
+  "version": "2.0.3",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon --exec electron ."
+    "watch": "nodemon --exec electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
-  "author": "",
+  "author": "Federico Giannotti",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -19,12 +21,44 @@
   "homepage": "https://github.com/shijii/yogi#readme",
   "dependencies": {
     "child_process": "^1.0.2",
-    "ping": "*",
-    "toastr": "^2.1.4"
+    "electron-squirrel-startup": "^1.0.0",
+    "ping": "*"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.64",
+    "@electron-forge/maker-deb": "^6.0.0-beta.64",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.64",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.64",
+    "@electron-forge/maker-zip": "^6.0.0-beta.64",
     "electron": "*",
     "nodemon": "^2.0.19"
   },
-  "description": ""
+  "description": "",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "yogi"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
 }

@@ -1,6 +1,9 @@
 :root{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   font-size: x-small;
+  font-family: "monospace";
+  font-family: 'Calibri';
+  letter-spacing: 0.15em;
 } 
 main {
   background-color: #111;
@@ -9,13 +12,23 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
 }
-footer{
-  color: #ccc
+header{
+  display: flex;
+  justify-content: space-between;
+  text-align: end;
+  color: #666;
+  font-size: 0.1em;
+  padding-bottom: 1.3em;
+  margin-bottom: 1.3em;
+  border-bottom: #ccc solid 0.1em;
+}
+header > div {
+  padding-bottom: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 section {
   background-color: #252525;
-
 }
 
 .hostsGroup{
@@ -23,6 +36,7 @@ section {
   border: solid black 0.1vh;
   padding: 0.3em;
 }
+
 .hostEntry{
   padding: 0.2em;
   border: solid black 0.1vh;
@@ -33,11 +47,9 @@ section {
   background-color: #333;
   font-weight: 200;
 	color: white;
-	font-family: monospace;
 	border-top-right-radius: 0.8em;
-  font-size: 12px;
   flex-wrap: wrap;
-  max-width: 10em;
+  min-width: 12em;
 }
 
 .hostName{
@@ -45,11 +57,14 @@ section {
  color: white;
  font-size: small;
  font-weight: 300;
-
 }
 .hostIp{
  color: #ccc;
  font-size: xx-small;
+}
+.lastSeen{
+  color: #333;
+  font-size: 0.7em;
 }
 
 .online {
@@ -57,4 +72,15 @@ section {
 }
 .offline {
   background-color: darkred;
+}
+
+#openHosts{
+  min-width: 12em;
+  width: 12em;
+  max-width: 12em;
+  border-radius: 0%;
+  border: solid black 0.1em;
+  font-size: xx-small;
+  color: white;
+  background-color: #252525;
 }

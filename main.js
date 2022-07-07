@@ -1,18 +1,22 @@
-const { app, BrowserWindow, ipcMain, Menu, webContents, ipcRenderer } = require('electron')
-
+const { app, shell, BrowserWindow, ipcMain, Menu, webContents } = require('electron')
+const fs = require('fs');
 const path = require('path')
 const ping = require('ping')
 const hostsListObj = require('./config/hosts.js');
 const electron = require('electron');
 const child_process = require('child_process');
 const dialog = electron.dialog;
+const nativeImage = require('electron').nativeImage;
+var appIcon = nativeImage.createFromPath(__dirname + '/img/icon.png'); 
+appIcon.setTemplateImage(true);
+const packageJson = readPackageJson();
 
 let win;
 
 // This function will output the lines from the script 
 // and will return the full combined output
 // as well as exit code when it's done (using the callback).
-function run_script(command, args, callback) {
+function runCmd(command, args, callback) {
     var child = child_process.spawn(command, args, {
         encoding: 'utf8',
         shell: true
@@ -58,6 +62,14 @@ function run_script(command, args, callback) {
         callback();
 }
 
+function readPackageJson(){
+  return JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf8'))
+}
+
+function getAuthorName(){
+  return packageJson.author
+}
+
 function statusedHosts(hostsListObj){
 
   let hostsList = Object.entries(hostsListObj)
@@ -75,6 +87,7 @@ function statusedHosts(hostsListObj){
           hostStatus : host.status,
           hostLastSeen : lastSeen ? lastSeen : previousLastSeen
         }
+        
         win.webContents.send("update-host", data)
 
       });
@@ -87,9 +100,10 @@ function statusedHosts(hostsListObj){
 
 function createWindow () {
   win = new BrowserWindow({
-    width: 220,
-    height: 400,
+    width: 320,
+    height: 480,
     backgroundColor: "#111",
+    icon: appIcon,
     webPreferences: {
         contextIsolation: true,
         sandbox: true,
@@ -101,12 +115,28 @@ function createWindow () {
   win.setMenuBarVisibility(false)
   win.loadFile('index.html')
 
+
   ipcMain.handle("get-hosts-list", () => {
    return hostsListObj 
   } )
 
   ipcMain.handle("open-ssh", (ev, ip) => {
-    run_script("putty", [`-ssh ${ip}`])
+    runCmd("putty", [`-ssh ${ip}`])
+  })
+
+  ipcMain.handle("app-info", () => {
+    return {
+      electron_version: process.versions.electron,
+      app_version: app.getVersion(),
+      app_name : app.getName(),
+      app_author: getAuthorName()
+    }
+  })
+
+  ipcMain.handle("open-hosts", () => {
+    let path =  __dirname + '\\config\\hosts.js'
+    console.log(path)
+    shell.openPath(path)
   })
 
   }
@@ -121,22 +151,6 @@ let pingtimer = setInterval( () => {
 app.whenReady().then(() => {
 
   createWindow()
-
-  setTimeout(()=> {
-    win.webContents.send("app-info", {
-      electron_version: process.versions.electron,
-      app_version: app.getVersion(),
-      app_name : app.getName()
-    })
-
-  },1000)
-
-
-
-
-
-
-
  
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
