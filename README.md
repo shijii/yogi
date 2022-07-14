@@ -13,8 +13,10 @@
 3 - start the app:
   npm start
   
-4 - (optional) build executable:
+4 - (optional) build executable (x64 in the example):
   npm exec --package=@electron-forge/cli -c "electron-forge import"
+  npm run package -- --arch=x64
+
   
   
 If you have "Putty" installed you can doubleclick a host rectangle in the gui to run a ssh connection toward it (only on default port)
